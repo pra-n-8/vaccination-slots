@@ -15,8 +15,8 @@ def main():
             print(district)
             response = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id="+str(district)+"&date="+from_date,headers=headers)
             print(response)
-            Vcenters = response.json()
-            checkSlots(Vcenters)
+#             Vcenters = response.json()
+#             checkSlots(Vcenters)
         time.sleep(6000)
 
 def checkSlots(centers):
