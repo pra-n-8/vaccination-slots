@@ -1,7 +1,7 @@
 from datetime import date
 import requests
 import time
-from flask import jsonify
+from flask import Flask, jsonify
 
 def main():
     i=0
@@ -37,6 +37,9 @@ def checkSlots(centers):
                 m2="|| Date "+s["date"] +"|| *** DOSE 2*** || "
             # print(message)
                 requests.post("https://api.telegram.org/bot1812087446:AAGMKkvTmyCIIcTfdFVEu1iKJA0R5zCeaeI/sendMessage?chat_id=-560862782&text="+m0+m2+m1)
+                
+                
+app = Flask(__name__)
 
 
 if __name__ == "__main__":
