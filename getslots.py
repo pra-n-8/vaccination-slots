@@ -3,7 +3,8 @@ from datetime import date
 import time
 def main():
     # print("called")
-    while (True):
+	i=0
+    while (i<10):
         today=date.today()
         from_date=today.strftime("%d-%m-%Y")
 #         print(from_date)
@@ -14,7 +15,8 @@ def main():
             Vcenters = response.json()
 #             print(district)
             checkSlots(Vcenters)
-        time.sleep(60000)
+		i+=1
+        #time.sleep(60000)
 # print(Vcenters["centers"])
 def checkSlots(centers):
     for center in centers["centers"]:
