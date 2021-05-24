@@ -1,7 +1,7 @@
 from datetime import date
 import requests
 import time
-import json
+from flask import jsonify
 
 def main():
     i=0
@@ -13,8 +13,8 @@ def main():
         for district in disricts:
             print(district)
             response = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id="+str(district)+"&date="+from_date,headers=headers)
-            Vcenters = json.dumps(response.json)
-            checkSlots(Vcenters)
+#             Vcenters = json.dumps(response.json)
+            checkSlots(jsonify(response))
         time.sleep(6000)
 
 def checkSlots(centers):
