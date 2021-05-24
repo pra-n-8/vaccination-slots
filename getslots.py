@@ -7,15 +7,15 @@ def main():
     i=0
     while(True):
         t=date.today()
-        from_date = t.strftime("%d-%m-%Y")
+        from_date = str(t.strftime("%d-%m-%Y"))
         print(from_date)
         headers={"user-agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"}
         disricts=[359,392]
         for district in disricts:
             print(district)
             response = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id="+str(district)+"&date="+from_date,headers=headers)
-#             Vcenters = json.dumps(response.json)
-            checkSlots(jsonify(response))
+            Vcenters = response.json
+            checkSlots(Vcenters)
         time.sleep(6000)
 
 def checkSlots(centers):
