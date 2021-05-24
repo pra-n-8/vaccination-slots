@@ -9,7 +9,7 @@ def main():
         t=date.today()
         from_date = str(t.strftime("%d-%m-%Y"))
         print(from_date)
-        headers={"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36","content-type":"application/json; charset=utf-8"}
+        headers={"Host": "cdn-api.co-vin.in","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36","content-type":"application/json; charset=utf-8"}
         disricts=[359,392]
         for district in disricts:
             print(district)
