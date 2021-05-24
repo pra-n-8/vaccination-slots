@@ -1,1 +1,1 @@
-python getslots.py
+worker: python getslots.py
