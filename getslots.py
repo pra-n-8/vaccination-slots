@@ -1,7 +1,6 @@
 from datetime import date
 import requests
 import time
-from flask import jsonify
 
 def main():
     i=0
