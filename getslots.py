@@ -3,7 +3,7 @@ from datetime import date
 import time
 def main():
     # print("called")
-    while (true):
+    while (True):
         today=date.today()
         from_date=today.strftime("%d-%m-%Y")
 #         print(from_date)
