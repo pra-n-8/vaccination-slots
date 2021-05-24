@@ -13,8 +13,8 @@ def main():
         for district in disricts:
             print(district)
             response = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id="+str(district)+"&date="+from_date,headers=headers)
-            Vcenters = json.load(response.json)
-            checkSlots(Vcenters)
+#             Vcenters = json.load(response.json)
+            checkSlots(response.json())
         time.sleep(6000)
 
 def checkSlots(centers):
