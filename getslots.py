@@ -13,7 +13,7 @@ def main():
         for district in disricts:
             print(district)
             response = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id="+str(district)+"&date="+from_date,headers=headers)
-            Vcenters = response.json
+            Vcenters = response.json()
             checkSlots(Vcenters)
         time.sleep(6000)
 
@@ -33,7 +33,7 @@ def checkSlots(centers):
             if(s["available_capacity_dose2"]>=1):
             # print(center)
                 m0="**** "+s["vaccine"]+" **** "
-                m1=str(s["available_capacity_dose1"])+" Vaccine Slot Available at Center "+center["name"]+", "+center["block_name"]+", "+center["district_name"]+", Dose 1 for Age "+ str(s["min_age_limit"])+" & above"
+                m1=str(s["available_capacity_dose2"])+" Vaccine Slot Available at Center "+center["name"]+", "+center["block_name"]+", "+center["district_name"]+", Dose 2 for Age "+ str(s["min_age_limit"])+" & above"
                 m2="|| Date "+s["date"] +"|| *** DOSE 2*** || "
             # print(message)
                 requests.post("https://api.telegram.org/bot1812087446:AAGMKkvTmyCIIcTfdFVEu1iKJA0R5zCeaeI/sendMessage?chat_id=-560862782&text="+m0+m2+m1)
