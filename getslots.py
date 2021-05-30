@@ -4,20 +4,20 @@ import time
 import json
 
 def main():
-    i=0
     while(True):
         t=date.today()
         from_date = str(t.strftime("%d-%m-%Y"))
-        print(from_date)
+        
         headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',"content-type":"application/json; charset=utf-8"}
-        disricts=[359,392]
+        disricts=[395,392]
+#         395 - Mumbai, 392 - Thane
         for district in disricts:
-            print(district)
+#             print(district)
             response = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id="+str(district)+"&date="+from_date,headers=headers)
-            print(response)
-#             Vcenters = response.json()
-#             checkSlots(Vcenters)
-        time.sleep(6000)
+#             print(response)
+            Vcenters = response.json()
+            checkSlots(Vcenters)
+        time.sleep(60)
 
 def checkSlots(centers):
     for center in centers["centers"]:
@@ -30,7 +30,7 @@ def checkSlots(centers):
                 m1=str(s["available_capacity_dose1"])+" Vaccine Slot Available at Center "+center["name"]+", "+center["block_name"]+", "+center["district_name"]+", Dose 1 for Age "+ str(s["min_age_limit"])+" & above"
                 m2="|| Date "+s["date"] +"|| *** DOSE 1*** || "
             # print(message)
-                requests.post("https://api.telegram.org/bot1812087446:AAGMKkvTmyCIIcTfdFVEu1iKJA0R5zCeaeI/sendMessage?chat_id=-560862782&text="+m0+m2+m1)
+                requests.post("https://api.telegram.org/<telegram bot key>/sendMessage?chat_id=<group id/chat id>&text="+m0+m2+m1)
 
             if(s["available_capacity_dose2"]>=1):
             # print(center)
@@ -38,7 +38,7 @@ def checkSlots(centers):
                 m1=str(s["available_capacity_dose2"])+" Vaccine Slot Available at Center "+center["name"]+", "+center["block_name"]+", "+center["district_name"]+", Dose 2 for Age "+ str(s["min_age_limit"])+" & above"
                 m2="|| Date "+s["date"] +"|| *** DOSE 2*** || "
             # print(message)
-                requests.post("https://api.telegram.org/bot1812087446:AAGMKkvTmyCIIcTfdFVEu1iKJA0R5zCeaeI/sendMessage?chat_id=-560862782&text="+m0+m2+m1)
+                requests.post("https://api.telegram.org/<telegram bot key>/sendMessage?chat_id=<group id/chat id>&text="+m0+m2+m1)
 
 if __name__ == "__main__":
     main()
